@@ -1,0 +1,7 @@
+version: 3
+tasks:
+  start:
+    - deno run --allow-net main.ts
+  test:
+    - deno run --allow-net tests/test_server.ts &
+    - deno test tests/grace.ts --allow-net --allow-run -- $(lsof -t -i :9094)
